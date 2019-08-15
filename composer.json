@@ -1,0 +1,19 @@
+{
+  "name": "sa/emagia",
+  "description": "eMAG’s Hero",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sergii Akimov",
+      "email": "akimovpost@icloud.com"
+    }
+  ],
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Emagia\\": "src"
+    }
+  }
+}
