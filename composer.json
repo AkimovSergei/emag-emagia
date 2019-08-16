@@ -10,10 +10,15 @@
     }
   ],
   "require": {
+    "vlucas/phpdotenv": "^3.4",
+    "monolog/monolog": "^1.24"
   },
   "autoload": {
     "psr-4": {
-      "Emagia\\": "src"
-    }
+      "Emagia\\": "src/Emagia"
+    },
+    "files": [
+      "src/Emagia/Core/helpers.php"
+    ]
   }
 }
