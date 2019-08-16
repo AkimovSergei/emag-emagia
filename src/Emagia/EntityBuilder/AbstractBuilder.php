@@ -55,4 +55,23 @@ abstract class AbstractBuilder
         );
     }
 
+    /**
+     * @return array
+     */
+    public function getConfigs(): array
+    {
+        return $this->configs;
+    }
+
+    /**
+     * @param array $configs
+     * @return AbstractBuilder
+     */
+    public function setConfigs(array $configs): AbstractBuilder
+    {
+        $this->configs = $configs;
+
+        return $this;
+    }
+
 }

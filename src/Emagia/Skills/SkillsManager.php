@@ -63,9 +63,7 @@ class SkillsManager
         if (!$skill->shouldUseSkill()) {
             return $this;
         }
-
-        $this->output("{$entity->getName()} use {$skill->getClassName()} skill.");
-
+        
         $this
             ->getSkillHandler($skill->getClassName())
             ->setOutput($this->getOutput())

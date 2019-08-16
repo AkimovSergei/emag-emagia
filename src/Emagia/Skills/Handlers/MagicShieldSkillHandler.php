@@ -28,7 +28,7 @@ class MagicShieldSkillHandler
     {
         $damage = (int)($damage / 2);
 
-        $entity->applyDamage(-1 * $damage);
+        $entity->treat($damage);
 
         $this->output("Magic shield reduce damage to {$damage}. {$entity->getName()} health is {$entity->getHealth()}");
 

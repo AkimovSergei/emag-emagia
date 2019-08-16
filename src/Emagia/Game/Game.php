@@ -272,13 +272,13 @@ class Game
 
     public function outputEntity(AbstractEntity $entity)
     {
-        $this->output("
-        {$entity->getName()}:
-            Health: {$entity->getHealth()},
-            Strength: {$entity->getStrength()},
-            Defence: {$entity->getDefence()}
-            Speed: {$entity->getSpeed()}
-            Luck: {$entity->getLuck()}
+        return $this->output("
+    {$entity->getName()}:
+        Health: {$entity->getHealth()},
+        Strength: {$entity->getStrength()},
+        Defence: {$entity->getDefence()}
+        Speed: {$entity->getSpeed()}
+        Luck: {$entity->getLuck()}
         ");
     }
 
