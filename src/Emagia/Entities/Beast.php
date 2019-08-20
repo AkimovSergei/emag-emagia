@@ -11,5 +11,4 @@ namespace Emagia\Entities;
 class Beast
     extends AbstractEntity
 {
-
 }

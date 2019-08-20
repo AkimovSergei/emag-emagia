@@ -1,7 +1,8 @@
 <?php
 
-namespace Emagia\Exceptions;
+declare(strict_types=1);
 
+namespace Emagia\Exceptions;
 
 /**
  * Class InvalidSkillException

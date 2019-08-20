@@ -11,5 +11,4 @@ namespace Emagia\Entities;
 class Hero
     extends AbstractEntity
 {
-
 }

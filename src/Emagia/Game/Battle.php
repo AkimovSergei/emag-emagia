@@ -35,28 +35,26 @@ class Battle
     public function fight(Game $game)
     {
         $this
-            ->getDefending()
+            ->defending
             ->applyDamage($damage = $this->calculateDamage());
 
-        $this->output("{$this->getAttacking()->getName()} damage {$this->getDefending()->getName()} on {$damage}");
+        $this->output("{$this->attacking->getName()} damage {$this->defending->getName()} on {$damage}");
 
-        foreach ($this->getDefending()->getSkills() as $skill) {
+        foreach ($this->defending->getSkills() as $skill) {
             if (AbstractSkill::USAGE_DEFEND === $skill->getUsage()) {
-                $this->skillsManager
-                    ->useSkill($game, $this->getDefending(), $skill, $damage);
+                $this->skillsManager->useSkill($game, $this->defending, $skill, $damage);
             }
         }
 
-        $this->output("{$this->getDefending()->getName()} health is {$this->getDefending()->getHealth()}");
+        $this->output("{$this->defending->getName()} health is {$this->defending->getHealth()}");
 
-        if (!$this->getDefending()->isAlive()) {
+        if (!$this->defending->isAlive()) {
             return $this;
         }
 
-        foreach ($this->getAttacking()->getSkills() as $skill) {
+        foreach ($this->attacking->getSkills() as $skill) {
             if (AbstractSkill::USAGE_ATTACK === $skill->getUsage()) {
-                $this->skillsManager
-                    ->useSkill($game, $this->getAttacking(), $skill, $damage);
+                $this->skillsManager->useSkill($game, $this->attacking, $skill, $damage);
             }
         }
 
@@ -126,7 +124,7 @@ class Battle
      */
     public function calculateDamage()
     {
-        return $this->getAttacking()->getStrength() - $this->getDefending()->getDefence();
+        return $this->attacking->getStrength() - $this->defending->getDefence();
     }
 
 }

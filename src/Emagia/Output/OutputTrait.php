@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Emagia\Output;
 
-use Emagia\Game\Game;
-
 /**
  * Trait OutputTrait
  *
@@ -27,9 +25,9 @@ trait OutputTrait
 
     /**
      * @param OutputInterface $output
-     * @return $this
+     * @return self
      */
-    public function setOutput(OutputInterface $output)
+    public function setOutput(OutputInterface $output): self
     {
         $this->output = $output;
 

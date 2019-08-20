@@ -10,7 +10,6 @@ use Emagia\EntityBuilder\HeroBuilder;
 use Emagia\Exceptions\GameNotConfiguredException;
 use Emagia\Game\Game;
 use Emagia\Output\ConsoleOutput;
-use Emagia\Output\MonologOutput;
 use Emagia\Skills\Handlers\MagicShieldSkillHandler;
 use Emagia\Skills\Handlers\RapidStrikeSkillHandler;
 use Emagia\Skills\MagicShieldSkill;

@@ -44,9 +44,9 @@ abstract class AbstractEntity
 
     /**
      * @param string $name
-     * @return AbstractEntity
+     * @return self
      */
-    public function setName(string $name): AbstractEntity
+    public function setName(string $name): self
     {
         $this->name = $name;
 
@@ -63,9 +63,9 @@ abstract class AbstractEntity
 
     /**
      * @param int $health
-     * @return AbstractEntity
+     * @return self
      */
-    public function setHealth(int $health): AbstractEntity
+    public function setHealth(int $health): self
     {
         $this->health = $health;
 
@@ -82,9 +82,9 @@ abstract class AbstractEntity
 
     /**
      * @param int $strength
-     * @return AbstractEntity
+     * @return self
      */
-    public function setStrength(int $strength): AbstractEntity
+    public function setStrength(int $strength): self
     {
         $this->strength = $strength;
 
@@ -101,9 +101,9 @@ abstract class AbstractEntity
 
     /**
      * @param int $defence
-     * @return AbstractEntity
+     * @return self
      */
-    public function setDefence(int $defence): AbstractEntity
+    public function setDefence(int $defence): self
     {
         $this->defence = $defence;
 
@@ -120,9 +120,9 @@ abstract class AbstractEntity
 
     /**
      * @param int $speed
-     * @return AbstractEntity
+     * @return self
      */
-    public function setSpeed(int $speed): AbstractEntity
+    public function setSpeed(int $speed): self
     {
         $this->speed = $speed;
 
@@ -139,9 +139,9 @@ abstract class AbstractEntity
 
     /**
      * @param int $luck
-     * @return AbstractEntity
+     * @return self
      */
-    public function setLuck(int $luck): AbstractEntity
+    public function setLuck(int $luck): self
     {
         $this->luck = $luck;
 
@@ -158,9 +158,9 @@ abstract class AbstractEntity
 
     /**
      * @param array $skills
-     * @return AbstractEntity
+     * @return self
      */
-    public function setSkills(array $skills): AbstractEntity
+    public function setSkills(array $skills): self
     {
         foreach ($skills as $skill) {
             $this->addSkill($skill);
@@ -173,9 +173,9 @@ abstract class AbstractEntity
      * Add skill
      *
      * @param AbstractSkill $skill
-     * @return $this
+     * @return self
      */
-    public function addSkill(AbstractSkill $skill)
+    public function addSkill(AbstractSkill $skill): self
     {
         if (!$skill instanceof AbstractSkill) {
             throw new InvalidSkillException('Invalid skill');
@@ -190,13 +190,11 @@ abstract class AbstractEntity
      * Apply damage
      *
      * @param $damage
-     * @return AbstractEntity
+     * @return self
      */
-    public function applyDamage($damage)
+    public function applyDamage($damage): self
     {
-        $this->setHealth(
-            max($this->getHealth() - $damage, 0)
-        );
+        $this->health = max($this->health - $damage, 0);
 
         return $this;
     }
@@ -204,14 +202,12 @@ abstract class AbstractEntity
     /**
      * Apply damage
      *
-     * @param $damage
-     * @return AbstractEntity
+     * @param $health
+     * @return self
      */
-    public function treat($health)
+    public function treat($health): self
     {
-        $this->setHealth(
-            min($this->getHealth() + $health, 100)
-        );
+        $this->health = min($this->health + $health, 100);
 
         return $this;
     }
@@ -221,7 +217,7 @@ abstract class AbstractEntity
      *
      * @return bool
      */
-    public function isAlive()
+    public function isAlive(): bool
     {
         return $this->getHealth() > 0;
     }

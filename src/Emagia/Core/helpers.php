@@ -58,22 +58,3 @@ if (!function_exists('env')) {
 
 }
 
-
-if (!function_exists('dd')) {
-
-    /**
-     * Return the default value of the given value.
-     *
-     * @param array $vars
-     * @return mixed
-     */
-    function dd(...$vars)
-    {
-        foreach ($vars as $var) {
-            var_dump($var);
-        }
-
-        die;
-    }
-
-}

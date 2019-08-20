@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Emagia\Output;
 
+use Exception;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
@@ -22,7 +23,7 @@ class MonologOutput
      * MonologOutput constructor.
      *
      * @param string $path
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct(string $path = '')
     {

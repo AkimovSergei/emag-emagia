@@ -22,6 +22,7 @@ abstract class AbstractSkill
     /** @var string Skill usage */
     protected $usage;
 
+    /** @var array Skill use cases */
     protected static $usageCases = [
         self::USAGE_ATTACK,
         self::USAGE_DEFEND,
@@ -47,9 +48,9 @@ abstract class AbstractSkill
 
     /**
      * @param int $occurrenceProbability
-     * @return AbstractSkill
+     * @return self
      */
-    public function setOccurrenceProbability(int $occurrenceProbability): AbstractSkill
+    public function setOccurrenceProbability(int $occurrenceProbability): self
     {
         if ($occurrenceProbability < 0 || $occurrenceProbability > 100) {
             throw new InvalidArgumentException("Occurrence probability should be in range [0, 100]");
@@ -70,9 +71,9 @@ abstract class AbstractSkill
 
     /**
      * @param string $usage
-     * @return AbstractSkill
+     * @return self
      */
-    public function setUsage(string $usage): AbstractSkill
+    public function setUsage(string $usage): self
     {
         if (!in_array($usage, static::$usageCases)) {
             throw new InvalidSkillException("{$usage} is invalid usage case");
@@ -88,12 +89,17 @@ abstract class AbstractSkill
      *
      * @return string
      */
-    public function getClassName()
+    public function getClassName(): string
     {
         return static::class;
     }
 
-    public function shouldUseSkill()
+    /**
+     * Calculate skill usage probability
+     *
+     * @return bool
+     */
+    public function shouldUseSkill(): bool
     {
         return mt_rand(0, 100) <= $this->getOccurrenceProbability();
     }

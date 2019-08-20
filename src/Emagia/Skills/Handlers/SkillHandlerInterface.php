@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Emagia\Skills\Handlers;
 
 use Emagia\Entities\AbstractEntity;

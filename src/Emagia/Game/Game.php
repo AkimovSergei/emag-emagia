@@ -123,7 +123,12 @@ class Game
         return $this->round;
     }
 
-    public function incrementRound()
+    /**
+     * Increment round number
+     *
+     * @return Game
+     */
+    protected function incrementRound(): self
     {
         $this->round++;
 
@@ -157,7 +162,7 @@ class Game
         $this->outputEntity($this->getHero());
         $this->outputEntity($this->getBeast());
 
-        $this->checkFirstAttachEntity();
+        $this->nextAttackBy = $this->checkFirstAttackEntity();
 
         $this->output("First attacker: " . $this->getAttacking()->getName());
 
@@ -197,7 +202,7 @@ class Game
      *
      * @return bool
      */
-    public function isEndOfGame()
+    public function isEndOfGame(): bool
     {
         if ($this->getRound() > $this->getMaxRoundsNumber()) {
             return true;
@@ -214,22 +219,27 @@ class Game
         return false;
     }
 
-    public function checkFirstAttachEntity()
+    /**
+     * Check first attack entity
+     *
+     * @return string
+     */
+    public function checkFirstAttackEntity(): string
     {
-        $this->nextAttackBy = static::NEXT_ATTACK_BY_HERO;
+        $nextAttackBy = static::NEXT_ATTACK_BY_HERO;
 
         // Let hero attach first on equals speed
         if ($this->getHero()->getSpeed() > $this->getBeast()->getSpeed()) {
-            $this->nextAttackBy = static::NEXT_ATTACK_BY_HERO;
+            $nextAttackBy = static::NEXT_ATTACK_BY_HERO;
         } elseif ($this->getHero()->getSpeed() < $this->getBeast()->getSpeed()) {
-            $this->nextAttackBy = static::NEXT_ATTACK_BY_BEAST;
+            $nextAttackBy = static::NEXT_ATTACK_BY_BEAST;
         } elseif ($this->getHero()->getLuck() > $this->getBeast()->getLuck()) {
-            $this->nextAttackBy = static::NEXT_ATTACK_BY_HERO;
+            $nextAttackBy = static::NEXT_ATTACK_BY_HERO;
         } elseif ($this->getHero()->getLuck() < $this->getBeast()->getLuck()) {
-            $this->nextAttackBy = static::NEXT_ATTACK_BY_BEAST;
+            $nextAttackBy = static::NEXT_ATTACK_BY_BEAST;
         }
 
-        return $this;
+        return $nextAttackBy;
     }
 
     /**
@@ -237,7 +247,7 @@ class Game
      *
      * @return AbstractEntity
      */
-    public function getAttacking()
+    public function getAttacking(): AbstractEntity
     {
         return static::NEXT_ATTACK_BY_HERO === $this->nextAttackBy
             ? $this->getHero()
@@ -249,7 +259,7 @@ class Game
      *
      * @return AbstractEntity
      */
-    public function getDefending()
+    public function getDefending(): AbstractEntity
     {
         return static::NEXT_ATTACK_BY_HERO === $this->nextAttackBy
             ? $this->getBeast()
@@ -259,9 +269,9 @@ class Game
     /**
      * Swap attacking
      *
-     * @return $this
+     * @return self
      */
-    public function swapAttacking()
+    public function swapAttacking(): self
     {
         $this->nextAttackBy = static::NEXT_ATTACK_BY_HERO === $this->nextAttackBy
             ? static::NEXT_ATTACK_BY_BEAST

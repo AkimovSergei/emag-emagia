@@ -52,9 +52,9 @@ class SkillsManager
      * @param AbstractEntity $entity
      * @param AbstractSkill $skill
      * @param int $damage
-     * @return $this
+     * @return self
      */
-    public function useSkill(Game $game, AbstractEntity $entity, AbstractSkill $skill, int $damage)
+    public function useSkill(Game $game, AbstractEntity $entity, AbstractSkill $skill, int $damage): self
     {
         if (!$this->isSkillHandlerExists($skill->getClassName())) {
             throw new InvalidSkillException('Invalid skill');
@@ -63,7 +63,7 @@ class SkillsManager
         if (!$skill->shouldUseSkill()) {
             return $this;
         }
-        
+
         $this
             ->getSkillHandler($skill->getClassName())
             ->setOutput($this->getOutput())

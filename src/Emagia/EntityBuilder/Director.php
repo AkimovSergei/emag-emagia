@@ -18,7 +18,7 @@ class Director
      *
      * @param EntityBuilderInterface $entityBuilder
      * @param string $name
-     * @return \Emagia\Entities\AbstractEntity
+     * @return AbstractEntity
      */
     public function build(EntityBuilderInterface $entityBuilder, string $name): AbstractEntity
     {

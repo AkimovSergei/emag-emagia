@@ -1,7 +1,8 @@
 <?php
 
-namespace Emagia\Skills\Handlers;
+declare(strict_types=1);
 
+namespace Emagia\Skills\Handlers;
 
 use Emagia\Entities\AbstractEntity;
 use Emagia\Game\Game;
@@ -22,7 +23,7 @@ class MagicShieldSkillHandler
      * @param AbstractEntity $entity
      * @param AbstractSkill $skill
      * @param int $damage
-     * @return mixed
+     * @return self
      */
     public function handle(Game $game, AbstractEntity $entity, AbstractSkill $skill, int $damage)
     {

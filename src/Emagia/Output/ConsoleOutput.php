@@ -1,7 +1,8 @@
 <?php
 
-namespace Emagia\Output;
+declare(strict_types=1);
 
+namespace Emagia\Output;
 
 /**
  * Class ConsoleOutput
